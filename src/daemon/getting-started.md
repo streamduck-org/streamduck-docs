@@ -1,14 +1,30 @@
 # Getting started
+This is required only if you used manual methods, if you installed Streamduck with an installer, it should have already done this
 
 ### 1. Dedicate a folder for daemon
 Create a folder somewhere where Streamduck will be keeping device configs and everything related.
 
 ### 2. Run Daemon in the folder
-Navigate to the folder with terminal and run `streamduck_daemon`
+Navigate to the folder with cmd/terminal and run `streamduck_daemon`
 
 This will start the daemon, and it should already be usable at this point.
 
 ### (Optional) 3. Autostart the daemon
+
+#### Windows
+
+Currently, there's no installer for Windows which would had added autostart. So you have to make a bat file that runs streamduck_daemon in specific folder, and add it to Startup folder
+
+Example of the file:
+```
+cd C:\streamduck_daemon_folder
+streamduck_daemon
+```
+
+And it should be placed to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`
+
+
+#### Linux
 This can be either done by having your Desktop Environment run the daemon on start, or using a user systemd service.
 
 Systemd service example:

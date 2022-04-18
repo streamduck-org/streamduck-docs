@@ -18,7 +18,9 @@ cargo install --git https://github.com/streamduck-org/streamduck.git streamduck-
 ```
 <br>
 
-# Udev rules for Linux
+# Udev rules
+This is required only for linux users. 
+
 It's required to add udev rules to be able to connect to HID devices without having root access.
 
 To install udev rules for Stream Deck devices, use following commands:

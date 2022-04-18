@@ -3,12 +3,19 @@
 [Overview](./overview.md)
 [Installation](./install.md)
 
-# For users
+# Daemon
 
-- [Getting Started](./users/getting-started.md)
-- [Configuration]()
-- [CLI Client]()
-- [GUI Client]()
+- [Getting Started](daemon/getting-started.md)
+- [Configuration](daemon/configuration.md)
+- [Backup](daemon/backup.md)
+
+# CLI Client
+
+- [Installation]()
+
+# GUI Client
+
+- [Installation]()
 
 # For developers
 
