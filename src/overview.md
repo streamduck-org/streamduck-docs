@@ -7,6 +7,9 @@ This software is striving to let users unlock full potential of their Stream Dec
 ## Installation
 Process of installing the software is described in [this section](./install.md)
 
+## Node Client
+Reference API to Node.js client can be found here: [API Reference](https://docs.streamduck.org/nodejs)
+
 ## Support
 If you're looking for assistance with Streamduck, Discord of the project is available here:
 

@@ -7,6 +7,19 @@ Streamduck is published on [crates.io](https://crates.io/search?q=streamduck), R
 If you don't have it installed, install it from here: [rustup.rs](https://rustup.rs/) <br> 
 The project is using 1.59 version of Rust compiler.
 
+### Dependencies
+Compilation of the project requires libusb and on Linux - libxdo. You can install the dependencies using following command on Ubuntu:
+```shell
+sudo apt update
+sudo apt-get install libusb-1.0-0-dev libxdo-dev
+```
+Arch: 
+```shell
+pacman -S libusb xdotool
+```
+
+On Windows it should pull the dependencies automatically if Windows updates don't break anything
+
 ### Cargo
 Once you have up to date version of Rust toolchain, use following command to install Streamduck daemon from crates.io:
 ```
