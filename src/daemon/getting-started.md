@@ -38,7 +38,7 @@ ExecStart=PATH_TO_STREAMDUCK_DAEMON_EXECUTABLE
 (if installed with cargo, should be /home/<user>/.cargo/bin/streamduck_daemon)
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 The service should be installed in `~/.config/systemd/user/`
 
