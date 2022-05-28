@@ -11,11 +11,13 @@ Streamduck uses default values for config values if they don't exist, so you don
 Here's what you can change using the config file:
 
 #### Pooling rate
-This determines frequency of how often Streamduck will try to get button states from Stream Deck. Frame rate of animated images will also depend on this. Decreasing this might use less CPU, sacrificing responsiveness and frame rate of animated images 
+This determines frequency of how often Streamduck will try to get button states from Stream Deck. Frame rate of animated images will also depend on this. Decreasing this might use less CPU, sacrificing frame rate of animated images.
+
+Responsiveness is still high despite pool rate, because core stops waiting as soon as button press is detected 
 
 The parameter accepts positive integer. The larger the number, the more frequent pooling will be done
 ```toml
-pool_rate = 150
+pool_rate = 100
 ```
 
 #### Reconnect rate
