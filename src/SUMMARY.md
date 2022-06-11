@@ -19,7 +19,8 @@
 
 # GUI Client
 
-- [Installation]()
+- [Installation](gui/install.md)
+- [Usage]()
 
 # For developers
 

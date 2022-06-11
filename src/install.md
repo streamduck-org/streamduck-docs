@@ -1,3 +1,16 @@
+# Using Installers
+There's an installer currently for Windows only, you can get it from the [Releases page](https://github.com/streamduck-org/streamduck/releases)
+
+The installer installs the daemon with all the necessary configuration to it, and additionally a CLI client too
+
+After installation, you can check [daemon configuration page](daemon/configuration.md) in case you want to change any of the settings of the daemon, you can check [CLI usage page](cli/usage.md) to learn more about the CLI client. 
+
+You should check out [GUI installation page](gui/install.md), if you want a graphical interface. Recommended for Windows users 
+
+The daemon is usually installed into Program Files on Windows in a folder called Streamduck
+
+Linux setup script will be eventually available, for now Linux users have to use the [cargo way](#using-cargo)
+
 # Using Cargo
 
 Streamduck is published on [crates.io](https://crates.io/search?q=streamduck), Rust language's package repository.
