@@ -9,7 +9,7 @@ Configuration folder:
 
 **This folder has to be manually created.**
 
-> If your system is not supported it will use the current working directory
+> If your system is not supported, it will use the current working directory
 
 ## Configuration file
 
