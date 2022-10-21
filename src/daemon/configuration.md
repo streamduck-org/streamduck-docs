@@ -1,5 +1,5 @@
 # Configuration
-This page explains a bunch of different things that can be configured about Streamduck daemon
+This page explains a bunch of different things that can be configured in the Streamduck daemon.
 
 Configuration folder:
 
@@ -17,40 +17,48 @@ File `config.toml` should be located in your configuration folder, if it doesn't
 
 > You can use a different location with the `--config-path` option
 
-Streamduck uses default values for config values if they don't exist, so you don't have to add everything if you just want to change pooling rate. Default values are used in examples
+Streamduck uses default values for config values if they don't exist, so you don't have to add everything if you just want to change pooling rate. Default values are used in examples.
 
 Here's what you can change using the config file:
 
-#### Frame rate
-This determines frame rate of animated images
+#### Autosave
+This enables or disables the automatic device config saving.
 
-The parameter accepts positive integer. The larger the number, the more FPS you'll be able to get
+The parameter accepts true or false.
+```toml
+autosave = true
+```
+
+#### Frame rate
+This determines frame rate of animated images.
+
+The parameter accepts positive integers. The larger the number, the more FPS you'll be able to get.
 ```toml
 frame_rate = 100
 ```
 
 #### Reconnect rate
-This determines how often Streamduck will be checking for disconnected devices
+This determines how often Streamduck will be checking for disconnected devices.
 
-The parameter accepts seconds in positive float format
+The parameter accepts seconds in positive float format.
 ```toml
 reconnect_rate = 1.0
 ```
 
 #### Device config path
-This tells Streamduck where to keep device configs, folder will be created if it doesn't exist 
+This tells Streamduck where to keep device configs, folder will be created if it doesn't exist.
 ```toml
 device_config_path = "./devices"
 ```
 
 #### Plugins path
-This tells Streamduck where it should seek for plugins. If there's no folder at path, nothing will be loaded
+This tells Streamduck where it should seek for plugins. If there's no folder at path, nothing will be loaded.
 ```toml
 plugin_path = "./plugins"
 ```
 
 #### Plugin settings path
-This tells Streamduck at what path it should create json file for keeping settings of plugins
+This tells Streamduck at what path it should create json file for keeping settings of plugins.
 ```toml
 plugin_settings_path = "./global.json"
 ```
@@ -63,4 +71,4 @@ Fonts will be automatically loaded on next run of the daemon, and will be availa
 ## Plugins
 Plugins can be installed by dropping dynamic library files (.dll or .so for respective platform) into `plugins` folder inside your configuration folder.
 
-Plugins will be automatically loaded on next run of the daemon. If any error happens during plugin loading, it will be logged by the daemon. So if something doesn't work, check logs of the daemon and find out 
+Plugins will be automatically loaded on next run of the daemon. If any error happens during plugin loading, it will be logged by the daemon. So if something doesn't work, check logs of the daemon and find out.
