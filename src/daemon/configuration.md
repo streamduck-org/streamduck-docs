@@ -59,6 +59,12 @@ This tells Streamduck where to keep device configs, folder will be created if it
 device_config_path = "./devices"
 ```
 
+#### Fonts path
+This tells Streamduck where it should seek for fonts. If there's no folder at path, nothing will be loaded.
+```toml
+font_path = "./fonts"
+```
+
 #### Plugins path
 This tells Streamduck where it should seek for plugins. If there's no folder at path, nothing will be loaded.
 ```toml
@@ -72,7 +78,7 @@ plugin_settings_path = "./global.json"
 ```
 
 ## Custom fonts
-Custom fonts can be installed by creating a folder called `fonts` in your configuration folder, and dropping in .ttf or .otf files.
+Custom fonts can be installed by creating a folder called `fonts` in your configuration folder (or whatever was specified in `font_path`), and dropping in .ttf or .otf files.
 
 Fonts will be automatically loaded on next run of the daemon, and will be available to be selected in Streamduck clients.
 
