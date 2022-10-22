@@ -11,6 +11,16 @@ Process of installing the software is described in [this section](./install.md)
 Reference API to Node.js client can be found here: [API Reference](https://node.streamduck.org)
 
 ## Support
-If you're looking for assistance with Streamduck, Discord of the project is available here:
+If you're looking for assistance with Streamduck, You may want to join the Matrix discussion here:
+
+[![Matrix](https://img.shields.io/badge/Matrix-blue?style=for-the-badge)](https://matrix.to/#/#discussion:streamduck.org)
+
+If you don't use Matrix there is also a Discord chat:
 
 [![discord](https://img.shields.io/badge/Discord-blue?style=for-the-badge)](https://discord.gg/zTvhS7eYuQ)
+
+## Matrix chat
+
+You can join the whole Matrix community here:
+
+[![Matrix](https://img.shields.io/badge/community:streamduck.org-black?style=for-the-badge)](https://matrix.to/#/#community:streamduck.org)
