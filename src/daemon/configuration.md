@@ -45,6 +45,14 @@ The parameter accepts seconds in positive float format.
 reconnect_rate = 1.0
 ```
 
+#### Plugin compatibility checks
+This allows plugins to skip the compatibility check. This could crash the application if incompatible plugins are used.
+
+The parameter accepts true or false.
+```toml
+plugin_compatibility_checks = true
+``` 
+
 #### Device config path
 This tells Streamduck where to keep device configs, folder will be created if it doesn't exist.
 ```toml
