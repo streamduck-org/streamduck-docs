@@ -23,4 +23,4 @@ If you don't use Matrix there is also a Discord chat:
 
 You can join the whole Matrix community here:
 
-[![discord](https://img.shields.io/badge/community:streamduck.org-black?style=for-the-badge)](https://matrix.to/#/#community:streamduck.org)
+[![Matrix](https://img.shields.io/badge/community:streamduck.org-black?style=for-the-badge)](https://matrix.to/#/#community:streamduck.org)
