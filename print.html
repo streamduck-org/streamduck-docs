@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Streamduck Documentation</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><a href="install.html">Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Daemon</li><li class="chapter-item expanded "><a href="daemon/getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="daemon/configuration.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="daemon/design.html"><strong aria-hidden="true">3.</strong> Core Design</a></li><li class="chapter-item expanded "><a href="daemon/backup.html"><strong aria-hidden="true">4.</strong> Backup</a></li><li class="chapter-item expanded affix "><li class="part-title">CLI Client</li><li class="chapter-item expanded "><a href="cli/install.html"><strong aria-hidden="true">5.</strong> Installation</a></li><li class="chapter-item expanded "><a href="cli/usage.html"><strong aria-hidden="true">6.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/commands.html"><strong aria-hidden="true">6.1.</strong> Commands</a></li><li class="chapter-item expanded "><a href="cli/parameters.html"><strong aria-hidden="true">6.2.</strong> Parameters</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">GUI Client</li><li class="chapter-item expanded "><a href="gui/install.html"><strong aria-hidden="true">7.</strong> Installation</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Usage</div></li><li class="chapter-item expanded affix "><li class="part-title">For developers</li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Design of Streamduck</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Streamduck Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><img src="https://avatars.githubusercontent.com/u/101606787?s=200&amp;v=4" alt="Streamduck" /></p>
+<h1 id="streamduck"><a class="header" href="#streamduck">Streamduck</a></h1>
+<p><strong><a href="https://github.com/streamduck-org/streamduck">Streamduck</a></strong> is open-source software for managing Elgato Stream Deck devices</p>
+<h2 id="goal"><a class="header" href="#goal">Goal</a></h2>
+<p>This software is striving to let users unlock full potential of their Stream Deck devices. Extensibility is the main focus for Streamduck core</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>Process of installing the software is described in <a href="./install.html">this section</a></p>
+<h2 id="node-client"><a class="header" href="#node-client">Node Client</a></h2>
+<p>Reference API to Node.js client can be found here: <a href="https://node.streamduck.org">API Reference</a></p>
+<h2 id="support"><a class="header" href="#support">Support</a></h2>
+<p>If you're looking for assistance with Streamduck, you may want to join the Matrix discussion here:</p>
+<p><a href="https://matrix.to/#/#discussion:streamduck.org"><img src="https://img.shields.io/badge/Matrix-blue?style=for-the-badge" alt="Matrix" /></a></p>
+<p>If you don't use Matrix there is also a Discord chat:</p>
+<p><a href="https://discord.gg/zTvhS7eYuQ"><img src="https://img.shields.io/badge/Discord-blue?style=for-the-badge" alt="discord" /></a></p>
+<h2 id="matrix-chat"><a class="header" href="#matrix-chat">Matrix chat</a></h2>
+<p>You can join the whole Matrix community here:</p>
+<p><a href="https://matrix.to/#/#community:streamduck.org"><img src="https://img.shields.io/badge/community:streamduck.org-black?style=for-the-badge" alt="Matrix" /></a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-installers"><a class="header" href="#using-installers">Using Installers</a></h1>
+<p>There's an installer currently for Windows only, you can get it from the <a href="https://github.com/streamduck-org/streamduck/releases">Releases page</a></p>
+<p>The installer installs the daemon with all the necessary configuration to it, and additionally a CLI client too</p>
+<p>After installation, you can check <a href="daemon/configuration.html">daemon configuration page</a> in case you want to change any of the settings of the daemon, you can check <a href="cli/usage.html">CLI usage page</a> to learn more about the CLI client. </p>
+<p>You should check out <a href="gui/install.html">GUI installation page</a>, if you want a graphical interface. Recommended for Windows users </p>
+<p>The daemon is usually installed into Program Files on Windows in a folder called Streamduck</p>
+<p>Linux setup script will be eventually available, for now Linux users have to use the <a href="install.html#using-cargo">cargo way</a></p>
+<h1 id="using-cargo"><a class="header" href="#using-cargo">Using Cargo</a></h1>
+<p>Streamduck is published on <a href="https://crates.io/search?q=streamduck">crates.io</a>, Rust language's package repository.</p>
+<h3 id="make-sure-you-have-rust-toolchain-installed"><a class="header" href="#make-sure-you-have-rust-toolchain-installed">Make sure you have Rust toolchain installed</a></h3>
+<p>If you don't have it installed, install it from here: <a href="https://rustup.rs/">rustup.rs</a> <br> 
+The project is using 1.59 version of Rust compiler.</p>
+<h3 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h3>
+<p>Compilation of the project requires libusb and on Linux - libxdo. You can install the dependencies using following command on Ubuntu:</p>
+<pre><code class="language-shell">sudo apt update
+sudo apt-get install libusb-1.0-0-dev libxdo-dev
+</code></pre>
+<p>Arch: </p>
+<pre><code class="language-shell">pacman -S libusb xdotool
+</code></pre>
+<p>On Windows it should pull the dependencies automatically if Windows updates don't break anything</p>
+<h3 id="cargo"><a class="header" href="#cargo">Cargo</a></h3>
+<p>Once you have up to date version of Rust toolchain, use following command to install Streamduck daemon from crates.io:</p>
+<pre><code>cargo install streamduck-daemon
+</code></pre>
+<p>Git repository will usually have the latest code, but not always the most stable. If you want to install from git repository:</p>
+<pre><code>cargo install --git https://github.com/streamduck-org/streamduck.git streamduck-daemon
+</code></pre>
+<br>
+<h1 id="udev-rules"><a class="header" href="#udev-rules">Udev rules</a></h1>
+<p>This is required only for linux users. </p>
+<p>It's required to add udev rules to be able to connect to HID devices without having root access.</p>
+<p>To install udev rules for Stream Deck devices, use following commands:</p>
+<pre><code>wget https://raw.githubusercontent.com/streamduck-org/streamduck/master/sh/40-streamdeck.rules
+sudo mv 40-streamdeck.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
+<p>This is required only if you used manual methods, if you installed Streamduck with an installer, it should have already done this</p>
+<h3 id="1-dedicate-a-folder-for-daemon"><a class="header" href="#1-dedicate-a-folder-for-daemon">1. Dedicate a folder for daemon</a></h3>
+<p>Create a folder somewhere where Streamduck will be keeping device configs and everything related.</p>
+<h3 id="2-run-daemon-in-the-folder"><a class="header" href="#2-run-daemon-in-the-folder">2. Run Daemon in the folder</a></h3>
+<p>Navigate to the folder with cmd/terminal and run <code>streamduck_daemon</code></p>
+<p>This will start the daemon, and it should already be usable at this point.</p>
+<h3 id="optional-3-autostart-the-daemon"><a class="header" href="#optional-3-autostart-the-daemon">(Optional) 3. Autostart the daemon</a></h3>
+<h4 id="windows"><a class="header" href="#windows">Windows</a></h4>
+<p>Autostart is done automatically by the installer for Windows. Uses registry keys to do that</p>
+<h4 id="linux"><a class="header" href="#linux">Linux</a></h4>
+<p>This can be either done by having your Desktop Environment run the daemon on start, or using a user systemd service.</p>
+<p>Systemd service example:</p>
+<pre><code>[Unit]
+Description=Streamduck Daemon
+
+[Service]
+WorkingDirectory=PATH_TO_STREAMDUCK_FOLDER
+ExecStart=PATH_TO_STREAMDUCK_DAEMON_EXECUTABLE
+(if installed with cargo, should be /home/&lt;user&gt;/.cargo/bin/streamduck_daemon)
+
+[Install]
+WantedBy=default.target
+</code></pre>
+<p>The service should be installed in <code>~/.config/systemd/user/</code></p>
+<p>Following commands can be used to add the daemon to autostart and run it:</p>
+<pre><code>systemctl --user enable streamduck-daemon.service
+systemctl --user start streamduck-daemon.service
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<p>This page explains a bunch of different things that can be configured in the Streamduck daemon.</p>
+<p>Configuration folder:</p>
+<ul>
+<li>Linux: <code>$XDG_CONFIG_HOME/streamduck</code> or <code>$HOME/.config/streamduck</code></li>
+<li>MacOS: <code>$HOME/Library/Application Support/streamduck</code></li>
+<li>Windows: <code>{FOLDERID_RoamingAppData}/streamduck</code> (<code> %APPDATA%/streamduck</code>)</li>
+</ul>
+<p><strong>This folder has to be manually created.</strong></p>
+<blockquote>
+<p>If your system is not supported, it will use the current working directory</p>
+</blockquote>
+<h2 id="configuration-file"><a class="header" href="#configuration-file">Configuration file</a></h2>
+<p>File <code>config.toml</code> should be located in your configuration folder, if it doesn't exist, create one if you want to change anything.</p>
+<blockquote>
+<p>You can use a different location with the <code>--config-path</code> option</p>
+</blockquote>
+<p>Streamduck uses default values for config values if they don't exist, so you don't have to add everything if you just want to change pooling rate. Default values are used in examples.</p>
+<p>Here's what you can change using the config file:</p>
+<h4 id="autosave"><a class="header" href="#autosave">Autosave</a></h4>
+<p>This enables or disables the automatic device config saving.</p>
+<p>The parameter accepts true or false.</p>
+<pre><code class="language-toml">autosave = true
+</code></pre>
+<h4 id="frame-rate"><a class="header" href="#frame-rate">Frame rate</a></h4>
+<p>This determines frame rate of animated images.</p>
+<p>The parameter accepts positive integers. The larger the number, the more FPS you'll be able to get.</p>
+<pre><code class="language-toml">frame_rate = 100
+</code></pre>
+<h4 id="reconnect-rate"><a class="header" href="#reconnect-rate">Reconnect rate</a></h4>
+<p>This determines how often Streamduck will be checking for disconnected devices.</p>
+<p>The parameter accepts seconds in positive float format.</p>
+<pre><code class="language-toml">reconnect_rate = 1.0
+</code></pre>
+<h4 id="plugin-compatibility-checks"><a class="header" href="#plugin-compatibility-checks">Plugin compatibility checks</a></h4>
+<p>This allows plugins to skip the compatibility check. This could crash the application if incompatible plugins are used.</p>
+<p>The parameter accepts true or false.</p>
+<pre><code class="language-toml">plugin_compatibility_checks = true
+</code></pre>
+<h4 id="device-config-path"><a class="header" href="#device-config-path">Device config path</a></h4>
+<p>This tells Streamduck where to keep device configs, folder will be created if it doesn't exist.</p>
+<pre><code class="language-toml">device_config_path = &quot;./devices&quot;
+</code></pre>
+<h4 id="fonts-path"><a class="header" href="#fonts-path">Fonts path</a></h4>
+<p>This tells Streamduck where it should seek for fonts. If there's no folder at path, nothing will be loaded.</p>
+<pre><code class="language-toml">font_path = &quot;./fonts&quot;
+</code></pre>
+<h4 id="plugins-path"><a class="header" href="#plugins-path">Plugins path</a></h4>
+<p>This tells Streamduck where it should seek for plugins. If there's no folder at path, nothing will be loaded.</p>
+<pre><code class="language-toml">plugin_path = &quot;./plugins&quot;
+</code></pre>
+<h4 id="plugin-settings-path"><a class="header" href="#plugin-settings-path">Plugin settings path</a></h4>
+<p>This tells Streamduck at what path it should create json file for keeping settings of plugins.</p>
+<pre><code class="language-toml">plugin_settings_path = &quot;./global.json&quot;
+</code></pre>
+<h2 id="custom-fonts"><a class="header" href="#custom-fonts">Custom fonts</a></h2>
+<p>Custom fonts can be installed by creating a folder called <code>fonts</code> in your configuration folder (or whatever was specified in <code>font_path</code>), and dropping in .ttf or .otf files.</p>
+<p>Fonts will be automatically loaded on next run of the daemon, and will be available to be selected in Streamduck clients.</p>
+<h2 id="plugins"><a class="header" href="#plugins">Plugins</a></h2>
+<p>Plugins can be installed by dropping dynamic library files (.dll or .so for respective platform) into <code>plugins</code> folder inside your configuration folder.</p>
+<p>Plugins will be automatically loaded on next run of the daemon. If any error happens during plugin loading, it will be logged by the daemon. So if something doesn't work, check logs of the daemon and find out.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="explanation-of-core-design"><a class="header" href="#explanation-of-core-design">Explanation of Core Design</a></h1>
+<p>A bit of explanation needed to make sure you understand how Streamduck works, it's different from the official software</p>
+<h2 id="components-instead-of-button-types"><a class="header" href="#components-instead-of-button-types">Components instead of button types</a></h2>
+<p>Instead of having only one thing a button can do, Streamduck's buttons are containers of components. Many components can be put on a button, which makes a single button perform a bunch of different actions at once</p>
+<p>Components are unique however and there cannot be multiple of same components on a single button. The component should itself support multi-action if it needs to, implementations of multi-actions similar to official software will arrive later</p>
+<h2 id="plugins-are-everything"><a class="header" href="#plugins-are-everything">Plugins are everything</a></h2>
+<p>This software was designed with extensibility as main goal, the software has only essential functionality out of the box. Everything else that you might want will be added by plugins</p>
+<p>This allows the project to thrive even when the core stops being actively developed. Plugins can really do a lot of things with this software</p>
+<h2 id="images-are-part-of-device-configuration"><a class="header" href="#images-are-part-of-device-configuration">Images are part of device configuration</a></h2>
+<p>Images are kept inside of device configs as collection of identifiers to binary data</p>
+<p>This allows device configs to be self-contained and not rely on any external files, this also enables images to be uploaded over network using WebSocket </p>
+<h2 id="clients-are-only-messengers"><a class="header" href="#clients-are-only-messengers">Clients are only messengers</a></h2>
+<p>Everything you do with Streamduck is managed by the daemon, clients only tell daemon what to do</p>
+<p>So even if you decide to copy a button and close the client, the clipboard for buttons is kept on the daemon side. No progress will be lost, and you can even open a different client and paste from there, and you'll observe the button you copied from different client</p>
+<p>Due to focus of separately having a daemon, clients are considered separate projects. The main project is the core and daemon</p>
+<h2 id="devices-are-not-automatically-managed"><a class="header" href="#devices-are-not-automatically-managed">Devices are not automatically managed</a></h2>
+<p>Unlike official software, Streamduck will not automatically manage all found Stream Deck devices, you need to tell the daemon to manage the device </p>
+<p>This was made with assumption that someone might be using Stream Deck for some other purpose, and to avoid conflicts, the user should tell the daemon to manage the device, and not the daemon deciding to automatically take the device</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Some more information will be explained in documentation of the clients, proceed to <a href="daemon/../cli/install.html">CLI</a> or <a href="daemon/">GUI</a> section</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="backup"><a class="header" href="#backup">Backup</a></h1>
+<p>This page explains what you have to do to completely backup Streamduck data</p>
+<h2 id="device-configs"><a class="header" href="#device-configs">Device configs</a></h2>
+<p>Device configs contain all the information that is related to the device including button layout, images, plugin data</p>
+<p>Configs can be either exported with your client of choice, or saved by making a copy of <a href="daemon/configuration.html#device-config-path">device config folder</a></p>
+<h2 id="plugins-1"><a class="header" href="#plugins-1">Plugins</a></h2>
+<p>If you're using plugins, you should back up <a href="daemon/configuration.html#plugins-path">plugins folder</a></p>
+<h2 id="plugin-settings"><a class="header" href="#plugin-settings">Plugin settings</a></h2>
+<p><a href="daemon/configuration.html#plugin-settings-path">Plugin settings file</a> contains all settings of plugins/modules including settings of core module, it should be backed up for plugins to remember their global settings</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-cargo-1"><a class="header" href="#using-cargo-1">Using Cargo</a></h1>
+<p>Streamduck CLI client is published on <a href="https://crates.io/crates/streamduck-client">crates.io</a></p>
+<h3 id="dependencies-1"><a class="header" href="#dependencies-1">Dependencies</a></h3>
+<p>Streamduck CLI shares dependencies with Streamduck project, so refer to <a href="cli/../install.html#dependencies">this section</a></p>
+<h3 id="cargo-1"><a class="header" href="#cargo-1">Cargo</a></h3>
+<p>Use following command to install Streamduck CLI from crates.io:</p>
+<pre><code class="language-shell">cargo install streamduck-cli
+</code></pre>
+<p>In case if you want the latest possibly unstable code from Git repository, use following command:</p>
+<pre><code class="language-shell">cargo install --git https://github.com/streamduck-org/streamduck.git streamduck-cli
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage"><a class="header" href="#usage">Usage</a></h1>
+<p>This page explains how to get started with Streamduck through a CLI client</p>
+<h2 id="add-your-device"><a class="header" href="#add-your-device">Add your device</a></h2>
+<p>Before you can do anything, you need to tell daemon to manage your device</p>
+<p>Run the CLI in your terminal/CMD</p>
+<pre><code class="language-shell">streamduck-cli
+</code></pre>
+<p>List devices found on your computer</p>
+<pre><code class="language-shell">device list
+</code></pre>
+<p>If you don't see any devices, make sure your Stream Deck is connected. If you're on Linux, make sure you've installed Udev rules as explained in <a href="cli/../install.html#udev-rules">this section</a></p>
+<p>Add your device using serial number</p>
+<pre><code class="language-shell">device add &lt;serial number&gt;
+</code></pre>
+<h2 id="select-your-device"><a class="header" href="#select-your-device">Select your device</a></h2>
+<p>CLI requires a device to be selected before any of device commands can be executed, you can do this by using this command:</p>
+<pre><code class="language-shell">select &lt;serial number&gt;
+</code></pre>
+<h2 id="configure-your-layout"><a class="header" href="#configure-your-layout">Configure your layout</a></h2>
+<p>You can now configure layout of your buttons and components however you want. You can find all the commands explained <a href="cli/commands.html">here</a></p>
+<h2 id="make-sure-you-save"><a class="header" href="#make-sure-you-save">Make sure you save</a></h2>
+<p>Your layout will persist until the daemon gets shut down, if you want to save it, so it will remain longer than that, use following command:</p>
+<pre><code class="language-shell">config save
+</code></pre>
+<p>It will save config of currently selected device, if you want to save all devices:</p>
+<pre><code class="language-shell">config save all
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="commands"><a class="header" href="#commands">Commands</a></h1>
+<p>This page explains all the commands available in CLI</p>
+<h2 id="device-commands"><a class="header" href="#device-commands">Device commands</a></h2>
+<p>Commands for controlling Stream Deck devices</p>
+<h3 id="device-list"><a class="header" href="#device-list">device list</a></h3>
+<p>Lists all available and managed devices</p>
+<h3 id="device-add-serial-number"><a class="header" href="#device-add-serial-number">device add &lt;serial number&gt;</a></h3>
+<p>Adds specified device to managed device list, you can tell the device is managed if Elgato logo has disappeared</p>
+<h3 id="device-remove-serial-number"><a class="header" href="#device-remove-serial-number">device remove &lt;serial number&gt;</a></h3>
+<p>Removes specified device from managed device list</p>
+<h2 id="module-commands"><a class="header" href="#module-commands">Module commands</a></h2>
+<p>Commands for modules and components</p>
+<h3 id="module-list"><a class="header" href="#module-list">module list</a></h3>
+<p>Lists all modules loaded by the daemon</p>
+<h3 id="module-info-module-name"><a class="header" href="#module-info-module-name">module info &lt;module name&gt;</a></h3>
+<p>Shows some more information about specified module</p>
+<h3 id="module-params"><a class="header" href="#module-params">module params</a></h3>
+<p>Contains commands for manipulating module parameters, explained in depth in <a href="cli/parameters.html">following page</a></p>
+<h3 id="component-list"><a class="header" href="#component-list">component list</a></h3>
+<p>Lists all components added by loaded modules</p>
+<h3 id="component-info-component-name"><a class="header" href="#component-info-component-name">component info &lt;component name&gt;</a></h3>
+<p>Shows some more information about specified component</p>
+<h2 id="font-list-command"><a class="header" href="#font-list-command">Font list command</a></h2>
+<p>Following command shows list of loaded fonts</p>
+<pre><code class="language-shell">font list
+</code></pre>
+<p>Installation of custom fonts is explained in <a href="cli/../daemon/configuration.html#custom-fonts">this section</a></p>
+<h2 id="selection-command"><a class="header" href="#selection-command">Selection command</a></h2>
+<p>Following command tells the CLI that you want to work with specified device. Current selection is specified on left from prompt arrow</p>
+<pre><code class="language-shell">select &lt;serial number&gt;
+</code></pre>
+<p>All following commands require a device to be selected</p>
+<h2 id="key-index-reference"><a class="header" href="#key-index-reference">Key index reference</a></h2>
+<p>Reference for key indices that CLI uses:
+<img src="cli/keyindex_reference.png" alt="Key Index Reference" /></p>
+<h2 id="navigation-commands"><a class="header" href="#navigation-commands">Navigation commands</a></h2>
+<p>Commands for some navigation that can be done through CLI</p>
+<h3 id="press-key-index"><a class="header" href="#press-key-index">press &lt;key index&gt;</a></h3>
+<p>Simulates a press on a button, same thing as if a button on Stream Deck was pressed</p>
+<h3 id="back-drop"><a class="header" href="#back-drop">back [drop]</a></h3>
+<p>Goes back in screen stack, if using folders, it will do same thing as Folder Up component. If drop word is added to make <code>back drop</code>, will drop to root screen</p>
+<h3 id="stack"><a class="header" href="#stack">stack</a></h3>
+<p>Prints current stack of the device, which is usually the path you took with folders</p>
+<h2 id="configuration-commands"><a class="header" href="#configuration-commands">Configuration commands</a></h2>
+<p>Commands related to device configuration</p>
+<h3 id="brightness-0-100"><a class="header" href="#brightness-0-100">brightness &lt;0-100&gt;</a></h3>
+<p>Sets brightness of the device to specified value. 0 would disable the backlight</p>
+<h3 id="config-save"><a class="header" href="#config-save">config save</a></h3>
+<p>Saves device config to permanent storage</p>
+<h3 id="config-save-all"><a class="header" href="#config-save-all">config save all</a></h3>
+<p>Saves device configs of all managed devices</p>
+<h3 id="config-reload"><a class="header" href="#config-reload">config reload</a></h3>
+<p>Loads device config from permanent storage, overrides current state of the device</p>
+<h3 id="config-reload-all"><a class="header" href="#config-reload-all">config reload all</a></h3>
+<p>Loads device configs of all online managed devices, overrides their current states</p>
+<h3 id="config-export-path"><a class="header" href="#config-export-path">config export &lt;path&gt;</a></h3>
+<p>Saves device config into specified path, can be used to copy and paste configurations between devices, can be used also for backup</p>
+<h3 id="config-import-path"><a class="header" href="#config-import-path">config import &lt;path&gt;</a></h3>
+<p>Loads device config from specified path, overrides current state of the device</p>
+<h2 id="image-commands"><a class="header" href="#image-commands">Image commands</a></h2>
+<p>Commands related to image collections, some explanation is provided <a href="cli/../daemon/design.html#images-are-part-of-device-configuration">here</a> for what this is</p>
+<h3 id="image-list-preview-size"><a class="header" href="#image-list-preview-size">image list [preview size]</a></h3>
+<p>Shows list of saved images on the device with colored preview for each</p>
+<p>Size of the preview can be controlled by providing a number representing length of the preview square's side in pixels</p>
+<p>Previews are only supported on true color terminals, cmd will see only jibberish, this might be fixed in later updates</p>
+<h3 id="image-add-path"><a class="header" href="#image-add-path">image add &lt;path&gt;</a></h3>
+<p>Uploads image from specified path into Streamduck daemon, to be used later by button rendering</p>
+<h3 id="image-remove-identifier"><a class="header" href="#image-remove-identifier">image remove &lt;identifier&gt;</a></h3>
+<p>Removes image from image collection of the device, identifier can be looked up from <code>image list</code> or saved from moment of adding the image, as image identifier is printed as image is uploaded</p>
+<h2 id="button-commands"><a class="header" href="#button-commands">Button commands</a></h2>
+<p>Commands related to manipulating buttons on current screen</p>
+<h3 id="button-list"><a class="header" href="#button-list">button list</a></h3>
+<p>Lists buttons on current screen, some can appear there that cannot be seen on the Stream Deck screen, which usually means there's a button without a renderer component</p>
+<h3 id="button-info-key-index"><a class="header" href="#button-info-key-index">button info &lt;key index&gt;</a></h3>
+<p>Shows detailed information on specified button, which also includes list of components that the button has</p>
+<h3 id="button-new-key-index"><a class="header" href="#button-new-key-index">button new &lt;key index&gt;</a></h3>
+<p>Creates a new empty button on specified key, it will not have a renderer component, so for the button to appear visually on Stream Deck screen, add renderer component with <a href="cli/commands.html#button-component-add-key-index-component-name">following command</a></p>
+<h3 id="button-from-key-index-component-name"><a class="header" href="#button-from-key-index-component-name">button from &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Creates a new button using specified component as a template, comes with renderer as defined by the component</p>
+<h3 id="button-copy-key-index"><a class="header" href="#button-copy-key-index">button copy &lt;key index&gt;</a></h3>
+<p>Copies specified button into daemon's clipboard, to be later pasted by next command</p>
+<h3 id="button-paste-key-index"><a class="header" href="#button-paste-key-index">button paste &lt;key index&gt;</a></h3>
+<p>Pastes a button from daemon's clipboard onto specified key</p>
+<p>Plugins get to handle this command, so in case of folders, you'll get a copy of the folder on the new button</p>
+<h3 id="button-remove-key-index"><a class="header" href="#button-remove-key-index">button remove &lt;key index&gt;</a></h3>
+<p>Removes button from specified key</p>
+<p>Additionally, components might perform more cleanup, folder components will also delete folder data associated</p>
+<h3 id="button-component-add-key-index-component-name"><a class="header" href="#button-component-add-key-index-component-name">button component add &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Adds a component onto specified button, does not create a button if it doesn't exist</p>
+<p>See <a href="cli/commands.html#component-list">this command</a> to know what components are available</p>
+<h3 id="button-component-remove-key-index-component-name"><a class="header" href="#button-component-remove-key-index-component-name">button component remove &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Removes specified component from the button, performs some cleanup in case component requires it</p>
+<h3 id="button-component-params"><a class="header" href="#button-component-params">button component params</a></h3>
+<p>Contains commands for manipulating component parameters, explained in depth in <a href="cli/parameters.html">following page</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="component-parameters"><a class="header" href="#component-parameters">Component Parameters</a></h1>
+<p>Component parameters represent things that components allow you to change, renderer component allows you to change the way the button will look like and etc.</p>
+<p>Streamduck has 2 things that support parameters - module settings and component parameters</p>
+<h2 id="listing-parameters"><a class="header" href="#listing-parameters">Listing parameters</a></h2>
+<p>To list parameters of a module or component, you can use following command depending on which of the 2 you want to check:</p>
+<pre><code class="language-shell">button component params list &lt;key index&gt; &lt;component name&gt;
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">module params list &lt;module name&gt;
+</code></pre>
+<p>After running the command, you'll see a list of all parameters that the component or module provides, each parameter will have a name, description, path, type and current value</p>
+<h2 id="parameter-types"><a class="header" href="#parameter-types">Parameter types</a></h2>
+<p>Parameters come in all various ways and each accept different inputs, you can refer to this table to see what parameter type accepts what</p>
+<table><thead><tr><th>Type</th><th>What it accepts</th></tr></thead><tbody>
+<tr><td>Header</td><td>Doesn't accept anything, just large text for UI to render</td></tr>
+<tr><td>Label</td><td>Doesn't accept anything, meant to be a small textbox that cannot be changed</td></tr>
+<tr><td>Float</td><td>Accepts decimal fractions, example: 0.1; 35; 6546.241253</td></tr>
+<tr><td>Integer</td><td>Accepts whole numbers, example: 3; 6783; 3153; 53</td></tr>
+<tr><td>String</td><td>Accepts any text, spaces don't need to be escaped</td></tr>
+<tr><td>Float2</td><td>Accepts 2 decimal fractions one after the other, example: 0.1 0.2</td></tr>
+<tr><td>Integer2</td><td>Accepts 2 whole numbers one after the other, example: 1 2</td></tr>
+<tr><td>Positive Integer</td><td>Accepts a positive whole number, negative numbers will get an error</td></tr>
+<tr><td>Choice</td><td>Accepts a choice from predetermined ones, need to be written as they were specified in the parameters list, spaces don't need to be escaped</td></tr>
+<tr><td>Boolean</td><td>Accepts either <code>true</code> or <code>false</code></td></tr>
+<tr><td>Color</td><td>Accepts 4 numbers in succession with range from 0 to 255, example: 255 35 0 255</td></tr>
+<tr><td>Submenu</td><td>Doesn't accept anything, meant to be just a submenu in UI for organization of parameters</td></tr>
+<tr><td>Array</td><td>Doesn't accept anything on its own, see <a href="cli/parameters.html#dealing-with-arrays">following section</a> for more info on arrays</td></tr>
+<tr><td>ImageData</td><td>Accepts base64 data that represents image binary data of supported format, you can insert base64 string here, or use <a href="cli/parameters.html#uploading-images-into-parameters">upload</a> command</td></tr>
+<tr><td>ExistingImage</td><td>Accepts image identifier of an existing image, see <a href="cli/commands.html#image-list-preview-size">image list</a> command to get identifiers for uploaded images</td></tr>
+<tr><td>Font</td><td>Accepts font name, see <a href="cli/commands.html#font-list-command">font list</a> command for font names</td></tr>
+</tbody></table>
+<h2 id="setting-parameters"><a class="header" href="#setting-parameters">Setting parameters</a></h2>
+<p>After you figured out what you want to set, copy the path of the parameter and see what you can set to it based on the table above, you can use following command to set parameters</p>
+<pre><code class="language-shell">button component params set &lt;key index&gt; &lt;component name&gt; &lt;path to parameter&gt; &lt;value to set&gt;
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">module params set &lt;module name&gt; &lt;path to parameter&gt; &lt;value to set&gt;
+</code></pre>
+<p>If the value you want to set is the text kind, spaces will be preserved, so everything after the path will be the value</p>
+<h2 id="uploading-images-into-parameters"><a class="header" href="#uploading-images-into-parameters">Uploading images into parameters</a></h2>
+<p>You can use following command to upload images as parameter value, only supported by ImageData type</p>
+<pre><code class="language-shell">button component params upload &lt;key index&gt; &lt;component name&gt; &lt;path to parameter&gt; &lt;path to file&gt;
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">module params uplaod &lt;module name&gt; &lt;path to parameter&gt; &lt;path to file&gt;
+</code></pre>
+<h2 id="dealing-with-arrays"><a class="header" href="#dealing-with-arrays">Dealing with arrays</a></h2>
+<p>Arrays represent parameters that can have multiple elements. You cannot set to array directly, but you can add elements to it, remove elements and set values to its elements.</p>
+<h3 id="adding-elements-to-arrays"><a class="header" href="#adding-elements-to-arrays">Adding elements to arrays</a></h3>
+<p>You can add elements to arrays using following command, path to the array means you need to copy path of the parameter that has the type <code>Array</code></p>
+<pre><code class="language-shell">button component params add &lt;key index&gt; &lt;component name&gt; &lt;path to the array&gt;
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">module params add &lt;module name&gt; &lt;path to the array&gt;
+</code></pre>
+<p>This will add a new element at the end of the array</p>
+<h3 id="removing-elements-from-arrays"><a class="header" href="#removing-elements-from-arrays">Removing elements from arrays</a></h3>
+<p>Use following command to remove elements from arrays</p>
+<p>Index of the element can be inferred from the path, as elements of arrays get suffixed with a number which represents their index. So <code>text_params.text.0.text</code> means the parameter is located in element with index of 0</p>
+<pre><code class="language-shell">button component params remove &lt;key index&gt; &lt;component name&gt; &lt;path to the array&gt; &lt;index of the element&gt; 
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">module params remove &lt;module name&gt; &lt;path to the array&gt; &lt;index of the element&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-pre-packaged-binaries"><a class="header" href="#using-pre-packaged-binaries">Using pre-packaged binaries</a></h1>
+<p>Binaries are available for Windows and Linux users on <a href="https://github.com/streamduck-org/streamduck-gui/releases">the release page</a> of Streamduck GUI project</p>
+<h2 id="windows-1"><a class="header" href="#windows-1">Windows</a></h2>
+<p>Windows users get a setup executable, running the setup will automatically install the GUI and open it after</p>
+<p>Shortcut will be added to start menu and the GUI can be launched from that</p>
+<h2 id="linux-1"><a class="header" href="#linux-1">Linux</a></h2>
+<p>Linux users get a self-contained AppImage which can be executed to bring up the GUI client, as simple as that</p>
+<p>If you prefer, it can also be placed into <code>.local/bin</code> if you want to be able to launch if from terminal, or you can create a desktop file for it for more convenient way of launching the GUI</p>
+<h1 id="building-from-source"><a class="header" href="#building-from-source">Building from source</a></h1>
+<p>The GUI can be also built from source. The GUI runs on NodeJS v16, make sure you use that version, other versions might not work.</p>
+<ol>
+<li>Clone the repo using following command</li>
+</ol>
+<pre><code class="language-shell">git clone https://github.com/streamduck-org/streamduck-gui.git
+</code></pre>
+<ol start="2">
+<li>Install dependencies using following command</li>
+</ol>
+<pre><code class="language-shell">npm install
+</code></pre>
+<ol start="3">
+<li>Build or serve the GUI, depending on if you just want to run the GUI, or get a package</li>
+</ol>
+<pre><code class="language-shell">npm run electron:serve
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">npm run electron:build
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

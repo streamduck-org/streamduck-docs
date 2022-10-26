@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Commands - Streamduck Documentation</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><a href="../install.html">Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Daemon</li><li class="chapter-item expanded "><a href="../daemon/getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../daemon/configuration.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../daemon/design.html"><strong aria-hidden="true">3.</strong> Core Design</a></li><li class="chapter-item expanded "><a href="../daemon/backup.html"><strong aria-hidden="true">4.</strong> Backup</a></li><li class="chapter-item expanded affix "><li class="part-title">CLI Client</li><li class="chapter-item expanded "><a href="../cli/install.html"><strong aria-hidden="true">5.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../cli/usage.html"><strong aria-hidden="true">6.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/commands.html" class="active"><strong aria-hidden="true">6.1.</strong> Commands</a></li><li class="chapter-item expanded "><a href="../cli/parameters.html"><strong aria-hidden="true">6.2.</strong> Parameters</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">GUI Client</li><li class="chapter-item expanded "><a href="../gui/install.html"><strong aria-hidden="true">7.</strong> Installation</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Usage</div></li><li class="chapter-item expanded affix "><li class="part-title">For developers</li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Design of Streamduck</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Streamduck Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/streamduck-org/streamduck-docs/edit/master/src/cli/commands.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="commands"><a class="header" href="#commands">Commands</a></h1>
+<p>This page explains all the commands available in CLI</p>
+<h2 id="device-commands"><a class="header" href="#device-commands">Device commands</a></h2>
+<p>Commands for controlling Stream Deck devices</p>
+<h3 id="device-list"><a class="header" href="#device-list">device list</a></h3>
+<p>Lists all available and managed devices</p>
+<h3 id="device-add-serial-number"><a class="header" href="#device-add-serial-number">device add &lt;serial number&gt;</a></h3>
+<p>Adds specified device to managed device list, you can tell the device is managed if Elgato logo has disappeared</p>
+<h3 id="device-remove-serial-number"><a class="header" href="#device-remove-serial-number">device remove &lt;serial number&gt;</a></h3>
+<p>Removes specified device from managed device list</p>
+<h2 id="module-commands"><a class="header" href="#module-commands">Module commands</a></h2>
+<p>Commands for modules and components</p>
+<h3 id="module-list"><a class="header" href="#module-list">module list</a></h3>
+<p>Lists all modules loaded by the daemon</p>
+<h3 id="module-info-module-name"><a class="header" href="#module-info-module-name">module info &lt;module name&gt;</a></h3>
+<p>Shows some more information about specified module</p>
+<h3 id="module-params"><a class="header" href="#module-params">module params</a></h3>
+<p>Contains commands for manipulating module parameters, explained in depth in <a href="parameters.html">following page</a></p>
+<h3 id="component-list"><a class="header" href="#component-list">component list</a></h3>
+<p>Lists all components added by loaded modules</p>
+<h3 id="component-info-component-name"><a class="header" href="#component-info-component-name">component info &lt;component name&gt;</a></h3>
+<p>Shows some more information about specified component</p>
+<h2 id="font-list-command"><a class="header" href="#font-list-command">Font list command</a></h2>
+<p>Following command shows list of loaded fonts</p>
+<pre><code class="language-shell">font list
+</code></pre>
+<p>Installation of custom fonts is explained in <a href="../daemon/configuration.html#custom-fonts">this section</a></p>
+<h2 id="selection-command"><a class="header" href="#selection-command">Selection command</a></h2>
+<p>Following command tells the CLI that you want to work with specified device. Current selection is specified on left from prompt arrow</p>
+<pre><code class="language-shell">select &lt;serial number&gt;
+</code></pre>
+<p>All following commands require a device to be selected</p>
+<h2 id="key-index-reference"><a class="header" href="#key-index-reference">Key index reference</a></h2>
+<p>Reference for key indices that CLI uses:
+<img src="keyindex_reference.png" alt="Key Index Reference" /></p>
+<h2 id="navigation-commands"><a class="header" href="#navigation-commands">Navigation commands</a></h2>
+<p>Commands for some navigation that can be done through CLI</p>
+<h3 id="press-key-index"><a class="header" href="#press-key-index">press &lt;key index&gt;</a></h3>
+<p>Simulates a press on a button, same thing as if a button on Stream Deck was pressed</p>
+<h3 id="back-drop"><a class="header" href="#back-drop">back [drop]</a></h3>
+<p>Goes back in screen stack, if using folders, it will do same thing as Folder Up component. If drop word is added to make <code>back drop</code>, will drop to root screen</p>
+<h3 id="stack"><a class="header" href="#stack">stack</a></h3>
+<p>Prints current stack of the device, which is usually the path you took with folders</p>
+<h2 id="configuration-commands"><a class="header" href="#configuration-commands">Configuration commands</a></h2>
+<p>Commands related to device configuration</p>
+<h3 id="brightness-0-100"><a class="header" href="#brightness-0-100">brightness &lt;0-100&gt;</a></h3>
+<p>Sets brightness of the device to specified value. 0 would disable the backlight</p>
+<h3 id="config-save"><a class="header" href="#config-save">config save</a></h3>
+<p>Saves device config to permanent storage</p>
+<h3 id="config-save-all"><a class="header" href="#config-save-all">config save all</a></h3>
+<p>Saves device configs of all managed devices</p>
+<h3 id="config-reload"><a class="header" href="#config-reload">config reload</a></h3>
+<p>Loads device config from permanent storage, overrides current state of the device</p>
+<h3 id="config-reload-all"><a class="header" href="#config-reload-all">config reload all</a></h3>
+<p>Loads device configs of all online managed devices, overrides their current states</p>
+<h3 id="config-export-path"><a class="header" href="#config-export-path">config export &lt;path&gt;</a></h3>
+<p>Saves device config into specified path, can be used to copy and paste configurations between devices, can be used also for backup</p>
+<h3 id="config-import-path"><a class="header" href="#config-import-path">config import &lt;path&gt;</a></h3>
+<p>Loads device config from specified path, overrides current state of the device</p>
+<h2 id="image-commands"><a class="header" href="#image-commands">Image commands</a></h2>
+<p>Commands related to image collections, some explanation is provided <a href="../daemon/design.html#images-are-part-of-device-configuration">here</a> for what this is</p>
+<h3 id="image-list-preview-size"><a class="header" href="#image-list-preview-size">image list [preview size]</a></h3>
+<p>Shows list of saved images on the device with colored preview for each</p>
+<p>Size of the preview can be controlled by providing a number representing length of the preview square's side in pixels</p>
+<p>Previews are only supported on true color terminals, cmd will see only jibberish, this might be fixed in later updates</p>
+<h3 id="image-add-path"><a class="header" href="#image-add-path">image add &lt;path&gt;</a></h3>
+<p>Uploads image from specified path into Streamduck daemon, to be used later by button rendering</p>
+<h3 id="image-remove-identifier"><a class="header" href="#image-remove-identifier">image remove &lt;identifier&gt;</a></h3>
+<p>Removes image from image collection of the device, identifier can be looked up from <code>image list</code> or saved from moment of adding the image, as image identifier is printed as image is uploaded</p>
+<h2 id="button-commands"><a class="header" href="#button-commands">Button commands</a></h2>
+<p>Commands related to manipulating buttons on current screen</p>
+<h3 id="button-list"><a class="header" href="#button-list">button list</a></h3>
+<p>Lists buttons on current screen, some can appear there that cannot be seen on the Stream Deck screen, which usually means there's a button without a renderer component</p>
+<h3 id="button-info-key-index"><a class="header" href="#button-info-key-index">button info &lt;key index&gt;</a></h3>
+<p>Shows detailed information on specified button, which also includes list of components that the button has</p>
+<h3 id="button-new-key-index"><a class="header" href="#button-new-key-index">button new &lt;key index&gt;</a></h3>
+<p>Creates a new empty button on specified key, it will not have a renderer component, so for the button to appear visually on Stream Deck screen, add renderer component with <a href="#button-component-add-key-index-component-name">following command</a></p>
+<h3 id="button-from-key-index-component-name"><a class="header" href="#button-from-key-index-component-name">button from &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Creates a new button using specified component as a template, comes with renderer as defined by the component</p>
+<h3 id="button-copy-key-index"><a class="header" href="#button-copy-key-index">button copy &lt;key index&gt;</a></h3>
+<p>Copies specified button into daemon's clipboard, to be later pasted by next command</p>
+<h3 id="button-paste-key-index"><a class="header" href="#button-paste-key-index">button paste &lt;key index&gt;</a></h3>
+<p>Pastes a button from daemon's clipboard onto specified key</p>
+<p>Plugins get to handle this command, so in case of folders, you'll get a copy of the folder on the new button</p>
+<h3 id="button-remove-key-index"><a class="header" href="#button-remove-key-index">button remove &lt;key index&gt;</a></h3>
+<p>Removes button from specified key</p>
+<p>Additionally, components might perform more cleanup, folder components will also delete folder data associated</p>
+<h3 id="button-component-add-key-index-component-name"><a class="header" href="#button-component-add-key-index-component-name">button component add &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Adds a component onto specified button, does not create a button if it doesn't exist</p>
+<p>See <a href="#component-list">this command</a> to know what components are available</p>
+<h3 id="button-component-remove-key-index-component-name"><a class="header" href="#button-component-remove-key-index-component-name">button component remove &lt;key index&gt; &lt;component name&gt;</a></h3>
+<p>Removes specified component from the button, performs some cleanup in case component requires it</p>
+<h3 id="button-component-params"><a class="header" href="#button-component-params">button component params</a></h3>
+<p>Contains commands for manipulating component parameters, explained in depth in <a href="parameters.html">following page</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../cli/usage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../cli/parameters.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../cli/usage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../cli/parameters.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
