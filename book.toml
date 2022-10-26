@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Streamduck Documentation"
+
+[output.html]
+edit-url-template = "https://github.com/streamduck-org/streamduck-docs/edit/master/{path}"
+additional-css = ["custom.css"]
