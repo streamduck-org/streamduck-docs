@@ -20,7 +20,7 @@
 	padding: 5px;
 }
 
-.chapter-item:hover {
+.chapter-item:not(:empty):hover {
 	background: rgba(171, 115, 211, 0.3);
 	padding-left: 7px;
 
