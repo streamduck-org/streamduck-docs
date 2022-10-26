@@ -13,15 +13,7 @@ This will start the daemon, and it should already be usable at this point.
 
 #### Windows
 
-Currently, there's no installer for Windows which would had added autostart. So you have to make a bat file that runs streamduck_daemon in specific folder, and add it to Startup folder
-
-Example of the file:
-```
-cd C:\streamduck_daemon_folder
-streamduck_daemon
-```
-
-And it should be placed to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`
+Autostart is done automatically by the installer for Windows. Uses registry keys to do that
 
 
 #### Linux
