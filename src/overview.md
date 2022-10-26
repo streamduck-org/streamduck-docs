@@ -1,3 +1,5 @@
+![Streamduck](https://avatars.githubusercontent.com/u/101606787?s=200&v=4)
+
 # Streamduck
 **[Streamduck](https://github.com/streamduck-org/streamduck)** is open-source software for managing Elgato Stream Deck devices
 
